@@ -23,15 +23,15 @@ class AMLTransactionProcessor {
     }
 
     /**
- * Processes a given transaction by adding it to the corresponding account.
- * If the account does not exist, it will be created.
- *
- * @param transaction The transaction to be processed.
- * @return {@code true} if the transaction raised an AML violation alert,
- *         {@code false} if the transaction did not raise a violation alert.
- */
-public boolean processTransaction(Transaction transaction) {
-    return accountCache.computeIfAbsent(transaction.accountId(), Account::new)
-            .addTransaction(transaction);
-}
+     * Processes a given transaction by adding it to the corresponding account.
+     * If the account does not exist, it will be created.
+     *
+     * @param transaction The transaction to be processed.
+     * @return {@code true} if the transaction raised an AML violation alert,
+     * {@code false} if the transaction did not raise a violation alert.
+     */
+    public boolean processTransaction(Transaction transaction) {
+        return accountCache.computeIfAbsent(transaction.accountId(), Account::new)
+                .addTransaction(transaction);
+    }
 }

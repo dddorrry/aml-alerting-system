@@ -61,9 +61,9 @@ class AMLCSVReader {
             throw new IllegalArgumentException("The maximum number of accounts allowed " +
                     "in the input file is: " + MAX_ACCOUNTS);
 
-        if(transactionMap.values().stream().max(Comparator.naturalOrder()).orElse(Long.valueOf(0)) > MAX_TRANSACTIONS_PER_ACCOUNT)
+        if (transactionMap.values().stream().max(Comparator.naturalOrder()).orElse(Long.valueOf(0)) > MAX_TRANSACTIONS_PER_ACCOUNT)
             throw new IllegalArgumentException("The maximum number of transactions allowed" +
-                    " per account is: " +MAX_TRANSACTIONS_PER_ACCOUNT);
+                    " per account is: " + MAX_TRANSACTIONS_PER_ACCOUNT);
 
         return transactions;
     }

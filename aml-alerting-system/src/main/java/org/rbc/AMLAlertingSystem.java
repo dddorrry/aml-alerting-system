@@ -11,9 +11,10 @@ public class AMLAlertingSystem {
 
     /**
      * The main entry point of the AML Alerting System.
-     *For simplicity purposes, we are printing to the standard output. In Production, we would write to an output file.
+     * For simplicity purposes, we are printing to the standard output. In Production, we would write to an output file.
      * We are using a single thread executor to be able to queue up tasks for execution (decoupling file reading from
      * transaction processing) while still ensuring that the input order is maintained in the output
+     *
      * @param args The command-line arguments. The first argument should be the path to the CSV file containing
      *             transaction data.
      * @throws IOException If an error occurs while reading the CSV file.
@@ -27,7 +28,7 @@ public class AMLAlertingSystem {
         List<Transaction> transactions = AMLCSVReader.readTransactions(inputFilePath);
 
         AMLTransactionProcessor alertingSystem = new AMLTransactionProcessor();
-        var  executorService = Executors.newSingleThreadExecutor();
+        var executorService = Executors.newSingleThreadExecutor();
         for (Transaction transaction : transactions) {
             executorService.submit(() -> {
                 boolean alert = alertingSystem.processTransaction(transaction);
